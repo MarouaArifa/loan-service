@@ -45,4 +45,91 @@ public class LoanRequest {
 
     private Long customerId;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(double loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public double getFundedAmount() {
+        return fundedAmount;
+    }
+
+    public void setFundedAmount(double fundedAmount) {
+        this.fundedAmount = fundedAmount;
+    }
+
+    public double getIntRate() {
+        return intRate;
+    }
+
+    public void setIntRate(double intRate) {
+        this.intRate = intRate;
+    }
+
+    public double getInstallment() {
+        return installment;
+    }
+
+    public void setInstallment(double installment) {
+        this.installment = installment;
+    }
+
+    public Date getIssueDate() {
+        return issueDate;
+    }
+
+    public void setIssueDate(Date issueDate) {
+        this.issueDate = issueDate;
+    }
+
+    public PaymentPlan getPaymentPlan() {
+        return paymentPlan;
+    }
+
+    public void setPaymentPlan(PaymentPlan paymentPlan) {
+        this.paymentPlan = paymentPlan;
+    }
+
+    public Purpose getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(Purpose purpose) {
+        this.purpose = purpose;
+    }
+
+    public LoanStatus getLoanStatus() {
+        return loanStatus;
+    }
+
+    public void setLoanStatus(LoanStatus loanStatus) {
+        this.loanStatus = loanStatus;
+    }
+
+    public HomeOwnership getHomeOwnership() {
+        return homeOwnership;
+    }
+
+    public void setHomeOwnership(HomeOwnership homeOwnership) {
+        this.homeOwnership = homeOwnership;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
 }
