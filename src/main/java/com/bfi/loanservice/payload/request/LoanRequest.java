@@ -2,16 +2,12 @@ package com.bfi.loanservice.payload.request;
 
 import com.bfi.loanservice.models.HomeOwnership;
 import com.bfi.loanservice.models.LoanStatus;
-import com.bfi.loanservice.models.PaymentPlan;
 import com.bfi.loanservice.models.Purpose;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Getter
@@ -34,16 +30,28 @@ public class LoanRequest {
     private double installment;
 
     private Date issueDate;
+    private Date startDate;
 
-    private PaymentPlan paymentPlan;
+    private Long term;
 
     private Purpose purpose;
 
     private LoanStatus loanStatus;
+    private Date requestDate;
 
     private HomeOwnership homeOwnership;
+    private int requestStatus;
 
     private Long customerId;
+
+
+    public Date getRequestDate() {
+        return requestDate;
+    }
+
+    public void setRequestDate(Date requestDate) {
+        this.requestDate = requestDate;
+    }
 
     public Long getId() {
         return id;
@@ -93,12 +101,20 @@ public class LoanRequest {
         this.issueDate = issueDate;
     }
 
-    public PaymentPlan getPaymentPlan() {
-        return paymentPlan;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setPaymentPlan(PaymentPlan paymentPlan) {
-        this.paymentPlan = paymentPlan;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Long getTerm() {
+        return term;
+    }
+
+    public void setTerm(Long term) {
+        this.term = term;
     }
 
     public Purpose getPurpose() {
@@ -125,6 +141,14 @@ public class LoanRequest {
         this.homeOwnership = homeOwnership;
     }
 
+    public int getRequestStatus() {
+        return requestStatus;
+    }
+
+    public void setRequestStatus(int requestStatus) {
+        this.requestStatus = requestStatus;
+    }
+
     public Long getCustomerId() {
         return customerId;
     }
@@ -133,3 +157,4 @@ public class LoanRequest {
         this.customerId = customerId;
     }
 }
+

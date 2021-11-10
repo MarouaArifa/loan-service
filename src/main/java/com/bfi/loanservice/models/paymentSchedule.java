@@ -20,14 +20,28 @@ public class paymentSchedule {
     private Long id;
 
     @NotBlank
-    private double installmentAmount;
+    private double installmentAmount; //annuite
+
+    @NotBlank
+    private double amortization; //rembourse
+
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date installmentDate;
+    private Date installmentDate; // date paiement de chaque annuite
+
+    @NotBlank
+    private double principalAmount; //capital initial
+
+    @NotBlank
+    private double remainigCapital; //capital final
     @NotBlank
     private boolean isPaid;
 
     @NotBlank
-    private double interestAmount;
+    private double interestAmount; // dont interet
     @NotBlank
     private int lateDays;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Loan idLoan;
 }

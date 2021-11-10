@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -27,14 +28,18 @@ public class Loan {
 
     private double installment;
 
-    private boolean requestStatus;
+    private int requestStatus;
 
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date issueDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
-    private PaymentPlan paymentPlan;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date startDate;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date requestDate;
+
+    private Long term; //duree
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
@@ -50,21 +55,39 @@ public class Loan {
 
     private Long customerId;
 
+    @OneToMany (mappedBy="idLoan")
+    private Set<paymentSchedule> amortizationTable;
 
-    public Loan(double loanAmount, double fundedAmount, double intRate, double installment, Date issueDate, PaymentPlan paymentPlan, Purpose purpose, LoanStatus loanStatus, HomeOwnership homeOwnership, Long customerId) {
 
+    public Loan(double loanAmount, double fundedAmount, double intRate, double installment, int requestStatus, Date issueDate, Date startDate, Date requestDate, Long term, Purpose purpose, LoanStatus loanStatus, Long customerId) {
+        this.loanAmount = loanAmount;
+        this.fundedAmount = fundedAmount;
+        this.intRate = intRate;
+        this.installment = installment;
+        this.requestStatus = requestStatus;
+        this.issueDate = issueDate;
+        this.startDate = startDate;
+        this.requestDate = requestDate;
+        this.term = term;
+        this.purpose = purpose;
+        this.loanStatus = loanStatus;
+        this.customerId = customerId;
+    }
 
-        this.loanAmount=loanAmount;
-        this.fundedAmount=fundedAmount;
-        this.intRate=intRate;
-        this.installment=installment;
-        this.issueDate=issueDate;
-        this.paymentPlan=paymentPlan;
-        this.purpose=purpose;
-        this.loanStatus=loanStatus;
-        this.homeOwnership=homeOwnership;
-        this.customerId=customerId;
+    public int getRequestStatus() {
+        return requestStatus;
+    }
 
+    public void setRequestStatus(int requestStatus) {
+        this.requestStatus = requestStatus;
+    }
+
+    public Date getRequestDate() {
+        return requestDate;
+    }
+
+    public void setRequestDate(Date requestDate) {
+        this.requestDate = requestDate;
     }
 
     public Long getId() {
@@ -115,13 +138,6 @@ public class Loan {
         this.issueDate = issueDate;
     }
 
-    public PaymentPlan getPaymentPlan() {
-        return paymentPlan;
-    }
-
-    public void setPaymentPlan(PaymentPlan paymentPlan) {
-        this.paymentPlan = paymentPlan;
-    }
 
     public Purpose getPurpose() {
         return purpose;
@@ -154,4 +170,31 @@ public class Loan {
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
+
+
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Long getTerm() {
+        return term;
+    }
+
+    public void setTerm(Long term) {
+        this.term = term;
+    }
+
+    public Set<paymentSchedule> getAmortizationTable() {
+        return amortizationTable;
+    }
+
+    public void setAmortizationTable(Set<paymentSchedule> amortizationTable) {
+        this.amortizationTable = amortizationTable;
+    }
 }
+
