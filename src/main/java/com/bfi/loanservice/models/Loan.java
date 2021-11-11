@@ -28,7 +28,9 @@ public class Loan {
 
     private double installment;
 
-    private int requestStatus;
+    private int requestStatusAgent;
+
+    private int requestStatusAnalyst;
 
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date issueDate;
@@ -59,12 +61,12 @@ public class Loan {
     private Set<paymentSchedule> amortizationTable;
 
 
-    public Loan(double loanAmount, double fundedAmount, double intRate, double installment, int requestStatus, Date issueDate, Date startDate, Date requestDate, Long term, Purpose purpose, LoanStatus loanStatus, Long customerId) {
+    public Loan(double loanAmount, double fundedAmount, double intRate, double installment, int requestStatusAgent, Date issueDate, Date startDate, Date requestDate, Long term, Purpose purpose, LoanStatus loanStatus, Long customerId,int requestStatusAnalyst) {
         this.loanAmount = loanAmount;
         this.fundedAmount = fundedAmount;
         this.intRate = intRate;
         this.installment = installment;
-        this.requestStatus = requestStatus;
+        this.requestStatusAgent = requestStatusAgent;
         this.issueDate = issueDate;
         this.startDate = startDate;
         this.requestDate = requestDate;
@@ -72,14 +74,24 @@ public class Loan {
         this.purpose = purpose;
         this.loanStatus = loanStatus;
         this.customerId = customerId;
+        this.requestStatusAnalyst = requestStatusAnalyst;
     }
 
-    public int getRequestStatus() {
-        return requestStatus;
+
+    public int getRequestStatusAnalyst() {
+        return requestStatusAnalyst;
     }
 
-    public void setRequestStatus(int requestStatus) {
-        this.requestStatus = requestStatus;
+    public void setRequestStatusAnalyst(int requestStatusAnalyst) {
+        this.requestStatusAnalyst = requestStatusAnalyst;
+    }
+
+    public int getRequestStatusAgent() {
+        return requestStatusAgent;
+    }
+
+    public void setRequestStatusAgent(int requestStatusAgent) {
+        this.requestStatusAgent = requestStatusAgent;
     }
 
     public Date getRequestDate() {

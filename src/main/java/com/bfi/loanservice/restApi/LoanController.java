@@ -20,21 +20,22 @@ public class LoanController {
     LoanRepository loanRepository;
 
 
-    @PostMapping("createLoan")
+    @PostMapping("/createLoan")
     public ResponseEntity<?>  createLoan(@Valid @RequestBody LoanRequest loanRequest) {
         System.out.println("aaaaaaaaaaaaaaaaaaa");
         Loan l = new Loan( loanRequest.getLoanAmount(),
                 loanRequest.getFundedAmount(),
                 loanRequest.getIntRate(),
                 loanRequest.getInstallment(),
-                loanRequest.getRequestStatus(),
+                loanRequest.getRequestStatusAgent(),
                 loanRequest.getIssueDate(),
                 loanRequest.getStartDate(),
                 loanRequest.getRequestDate(),
                 loanRequest.getTerm(),
                 loanRequest.getPurpose(),
                 loanRequest.getLoanStatus(),
-                loanRequest.getCustomerId());
+                loanRequest.getCustomerId(),
+        loanRequest.getRequestStatusAnalyst());
        // l.setCustomerId(id);
         loanRepository.save(l);
         return ResponseEntity.ok(new MessageResponse("Loan registered successfully!"));

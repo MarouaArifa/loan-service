@@ -40,7 +40,9 @@ public class LoanRequest {
     private Date requestDate;
 
     private HomeOwnership homeOwnership;
-    private int requestStatus;
+    private int requestStatusAgent;
+
+    private int requestStatusAnalyst;
 
     private Long customerId;
 
@@ -141,20 +143,29 @@ public class LoanRequest {
         this.homeOwnership = homeOwnership;
     }
 
-    public int getRequestStatus() {
-        return requestStatus;
-    }
-
-    public void setRequestStatus(int requestStatus) {
-        this.requestStatus = requestStatus;
-    }
-
     public Long getCustomerId() {
         return customerId;
     }
 
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
+    }
+
+
+    public int getRequestStatusAgent() {
+        return requestStatusAgent;
+    }
+
+    public void setRequestStatusAgent(int requestStatusAgent) {
+        this.requestStatusAgent = requestStatusAgent;
+    }
+
+    public int getRequestStatusAnalyst() {
+        return requestStatusAnalyst;
+    }
+
+    public void setRequestStatusAnalyst(int requestStatusAnalyst) {
+        this.requestStatusAnalyst = requestStatusAnalyst;
     }
 }
 
