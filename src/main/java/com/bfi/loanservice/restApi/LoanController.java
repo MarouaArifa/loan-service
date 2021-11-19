@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -45,6 +46,13 @@ public class LoanController {
     @GetMapping("/loans/all")
     public Iterable<Loan> getAllLoans() {
         return loanRepository.findAll();
+    }
+
+
+    @GetMapping("/{id}")
+    public Optional<Loan> findById(@PathVariable (value = "id") Long id) {
+
+        return loanRepository.findById(id);
     }
 
 }

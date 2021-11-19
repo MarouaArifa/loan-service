@@ -18,17 +18,16 @@ public class SupportingDocumentLoan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @Size(max = 60)
     private String type;
     @NotBlank
-    @Size(max = 200)
     private String path;
-    @ManyToOne
-    private Customer customer;
 
-    public SupportingDocumentLoan(String type, String path, Customer customer) {
+    @ManyToOne
+    private Loan loan;
+
+    public SupportingDocumentLoan(String type, String path, Loan loan) {
         this.type = type;
         this.path = path;
-        this.customer = customer;
+        this.loan = loan;
     }
 }

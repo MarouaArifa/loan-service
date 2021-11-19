@@ -24,7 +24,7 @@ public class SupportingDocController {
         SupportingDocumentLoan d = new SupportingDocumentLoan(
                 docRequest.getType(),
                 docRequest.getPath(),
-                docRequest.getCustomer());
+                docRequest.getLoan());
                 docRepository.save(d);
         return ResponseEntity.ok(new MessageResponse("Documents registered successfully!"));
 
