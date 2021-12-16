@@ -22,12 +22,12 @@ public class SupportingDocumentLoan {
     @NotBlank
     private String path;
 
-    @ManyToOne
-    private Loan loan;
 
-    public SupportingDocumentLoan(String type, String path, Loan loan) {
+    private Long idLoan;
+
+    public SupportingDocumentLoan(String type, String path, Long idLoan) {
         this.type = type;
         this.path = path;
-        this.loan = loan;
+        this.idLoan = idLoan;
     }
 }

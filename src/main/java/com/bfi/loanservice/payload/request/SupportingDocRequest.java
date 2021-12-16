@@ -17,7 +17,7 @@ public class SupportingDocRequest {
     private Long id;
     private String type;
     private String path;
-    private Loan loan;
+    private Long idLoan;
 
 
     public Long getId() {
@@ -44,11 +44,11 @@ public class SupportingDocRequest {
         this.path = path;
     }
 
-    public Loan getLoan() {
-        return loan;
+    public Long getLoan() {
+        return idLoan;
     }
 
-    public void setLoan(Loan loan) {
-        this.loan = loan;
+    public void setLoan(Long idLoan) {
+        this.idLoan = idLoan;
     }
 }

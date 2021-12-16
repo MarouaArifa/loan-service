@@ -19,29 +19,41 @@ public class paymentSchedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+
     private double installmentAmount; //annuite
 
-    @NotBlank
+
     private double amortization; //rembourse
 
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date installmentDate; // date paiement de chaque annuite
 
-    @NotBlank
+
     private double principalAmount; //capital initial
 
-    @NotBlank
+
     private double remainigCapital; //capital final
-    @NotBlank
+
     private boolean isPaid;
 
-    @NotBlank
+
     private double interestAmount; // dont interet
-    @NotBlank
+
     private int lateDays;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Loan idLoan;
+    private Long idLoan;
+
+
+    public paymentSchedule(double installmentAmount, double amortization, Date installmentDate, double principalAmount, double remainigCapital, boolean isPaid, double interestAmount, int lateDays, Long idLoan) {
+        this.installmentAmount = installmentAmount;
+        this.amortization = amortization;
+        this.installmentDate = installmentDate;
+        this.principalAmount = principalAmount;
+        this.remainigCapital = remainigCapital;
+        this.isPaid = isPaid;
+        this.interestAmount = interestAmount;
+        this.lateDays = lateDays;
+        this.idLoan = idLoan;
+    }
 }

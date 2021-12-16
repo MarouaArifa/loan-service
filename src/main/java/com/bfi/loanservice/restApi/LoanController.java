@@ -1,6 +1,4 @@
 package com.bfi.loanservice.restApi;
-
-import com.bfi.loanservice.models.Customer;
 import com.bfi.loanservice.models.Loan;
 import com.bfi.loanservice.payload.request.LoanRequest;
 import com.bfi.loanservice.payload.response.MessageResponse;
@@ -10,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -36,15 +35,14 @@ public class LoanController {
                 loanRequest.getPurpose(),
                 loanRequest.getLoanStatus(),
                 loanRequest.getCustomerId(),
-        loanRequest.getRequestStatusAnalyst());
-       // l.setCustomerId(id);
+                loanRequest.getRequestStatusAnalyst());
         loanRepository.save(l);
         return ResponseEntity.ok(new MessageResponse("Loan registered successfully!"));
 
     }
 
     @GetMapping("/loans/all")
-    public Iterable<Loan> getAllLoans() {
+    public List<Loan> getAllLoans() {
         return loanRepository.findAll();
     }
 
@@ -53,6 +51,12 @@ public class LoanController {
     public Optional<Loan> findById(@PathVariable (value = "id") Long id) {
 
         return loanRepository.findById(id);
+    }
+
+    @GetMapping("/last/{key}")
+    public List<Loan> findByLastId(@PathVariable (value = "key") Long key) {
+
+        return loanRepository.findByLastId(key);
     }
 
 }

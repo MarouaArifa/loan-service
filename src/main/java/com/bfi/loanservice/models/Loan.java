@@ -60,6 +60,9 @@ public class Loan {
     @OneToMany (mappedBy="idLoan")
     private Set<paymentSchedule> amortizationTable;
 
+    @OneToMany (mappedBy="idLoan")
+    private Set<SupportingDocumentLoan> supportDocs;
+
 
     public Loan(double loanAmount, double fundedAmount, double intRate, double installment, int requestStatusAgent, Date issueDate, Date startDate, Date requestDate, Long term, Purpose purpose, LoanStatus loanStatus, Long customerId,int requestStatusAnalyst) {
         this.loanAmount = loanAmount;
