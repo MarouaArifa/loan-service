@@ -1,5 +1,7 @@
 package com.bfi.loanservice.restApi;
 
+import com.bfi.loanservice.exceptions.NotFoundException;
+import com.bfi.loanservice.models.Loan;
 import com.bfi.loanservice.models.paymentSchedule;
 import com.bfi.loanservice.payload.request.PaymentScheduleRequest;
 import com.bfi.loanservice.payload.response.MessageResponse;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -38,6 +41,19 @@ public class PaymentScheduleController {
 
     }
 
+
+    @PutMapping("/updateIsPaid/{id}")
+    public int updateIsPaid(@PathVariable(value = "id") Long id) throws NotFoundException {
+
+        return  paymentRepository.updateIsPaid(id);
+
+    }
+
+    @PutMapping("/updateLateDays/{id}/{d}")
+    public int updateLateDays(@PathVariable(value = "id") Long id,@PathVariable(value = "d") int d) throws NotFoundException {
+
+        return  paymentRepository.updateLateDays(id,d);
+    }
 
 
 }

@@ -1,4 +1,5 @@
 package com.bfi.loanservice.restApi;
+import com.bfi.loanservice.exceptions.NotFoundException;
 import com.bfi.loanservice.models.Loan;
 import com.bfi.loanservice.payload.request.LoanRequest;
 import com.bfi.loanservice.payload.response.MessageResponse;
@@ -58,5 +59,46 @@ public class LoanController {
 
         return loanRepository.findByLastId(key);
     }
+
+
+    @PutMapping("/decisionAgent/{id}/{d}")
+    public int decisionAgent(@PathVariable(value = "id") Long id,@PathVariable(value = "d") int d) throws NotFoundException {
+        Optional<Loan> us = Optional.ofNullable(loanRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("user not Found for this id ::" + id)));
+        return  loanRepository.AcceptAgent(id,d);
+
+    }
+
+
+    @PutMapping("/decisionAnalyst/{id}/{d}")
+    public int decisionAnalyst(@PathVariable(value = "id") Long id,@PathVariable(value = "d") int d) throws NotFoundException {
+        Optional<Loan> us = Optional.ofNullable(loanRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("user not Found for this id ::" + id)));
+        return  loanRepository.AcceptAnalyste(id,d);
+    }
+
+
+    @GetMapping("/accepted")
+    public List<Loan> getLoansAccepted() {
+        return loanRepository.allLoansAccepted();
+    }
+
+    @GetMapping("/listAnalyst")
+    public List<Loan> getLoansAnalyst() {
+        return loanRepository.allReqAnalyst();
+    }
+
+    @GetMapping("/listAgent")
+    public List<Loan> getLoansAgent() {
+        return loanRepository.allReqAgent();
+    }
+
+  /*  @PutMapping("/updateIsPaid/{id}")
+    public int updateIsPaid(@PathVariable(value = "id") Long id) throws NotFoundException {
+
+        return  loanRepository.updateIsPaid(id);
+
+    }
+*/
 
 }

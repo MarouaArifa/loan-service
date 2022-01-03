@@ -55,6 +55,7 @@ public class Loan {
     @Column(length = 20)
     private HomeOwnership homeOwnership;
 
+
     private Long customerId;
 
     @OneToMany (mappedBy="idLoan")
