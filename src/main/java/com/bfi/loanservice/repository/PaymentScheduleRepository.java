@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface PaymentScheduleRepository extends JpaRepository<paymentSchedule,Long> {
 
@@ -20,6 +22,10 @@ public interface PaymentScheduleRepository extends JpaRepository<paymentSchedule
     @Transactional
     @Query("update paymentSchedule p set p.lateDays =:d where p.id =:id ")
     int updateLateDays(Long id,int d);
+
+
+    @Query("select p from paymentSchedule p where cast( p.installmentDate as string) like %:key%")
+    List<paymentSchedule> findByDate(String key);
 
 
 

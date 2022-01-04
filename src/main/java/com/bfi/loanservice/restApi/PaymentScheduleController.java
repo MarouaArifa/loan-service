@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -53,6 +54,14 @@ public class PaymentScheduleController {
     public int updateLateDays(@PathVariable(value = "id") Long id,@PathVariable(value = "d") int d) throws NotFoundException {
 
         return  paymentRepository.updateLateDays(id,d);
+    }
+
+
+    @GetMapping("findByDate/{key}")
+    public List<paymentSchedule> findMulti(@PathVariable (value = "key") String key) {
+
+        return paymentRepository.findByDate(key);
+
     }
 
 
