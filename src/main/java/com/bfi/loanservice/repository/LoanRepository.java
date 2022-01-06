@@ -36,13 +36,8 @@ public interface LoanRepository  extends JpaRepository<Loan,Long> {
     @Query("select l from Loan l where l.requestStatusAgent = 1 and l.requestStatusAnalyst = 1 ")
     List<Loan> allLoansAccepted();
 
-/*
-    @Modifying
-    @Transactional
-    @Query("update Loan l set l.isPaid = true where l.id =:id ")
-    int updateIsPaid(Long id);
-*/
-
+    @Query("select l from Loan l where cast( l.customerId as string) like %:key%  or cast( l.startDate as string) like %:key%")
+    List<Loan> findMulti(String key);
 
 
 }

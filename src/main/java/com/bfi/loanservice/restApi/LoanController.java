@@ -93,12 +93,11 @@ public class LoanController {
         return loanRepository.allReqAgent();
     }
 
-  /*  @PutMapping("/updateIsPaid/{id}")
-    public int updateIsPaid(@PathVariable(value = "id") Long id) throws NotFoundException {
+    @GetMapping("findMulti/{key}")
+    public List<Loan> findMulti(@PathVariable (value = "key") String key) {
 
-        return  loanRepository.updateIsPaid(id);
+        return loanRepository.findMulti(key);
 
     }
-*/
 
 }
