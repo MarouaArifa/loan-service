@@ -27,6 +27,7 @@ public class Loan {
     private double intRate;
 
     private double installment;
+    private double dti;
 
     private int requestStatusAgent;
 
@@ -65,17 +66,19 @@ public class Loan {
     private Set<SupportingDocumentLoan> supportDocs;
 
 
-    public Loan(double loanAmount, double fundedAmount, double intRate, double installment, int requestStatusAgent, Date issueDate, Date startDate, Date requestDate, Long term, Purpose purpose, LoanStatus loanStatus, Long customerId,int requestStatusAnalyst) {
+    public Loan(double loanAmount, double fundedAmount, double intRate, double installment,double dti, int requestStatusAgent, Date issueDate, Date startDate, Date requestDate, Long term, Purpose purpose,HomeOwnership homeOwnership ,LoanStatus loanStatus, Long customerId,int requestStatusAnalyst) {
         this.loanAmount = loanAmount;
         this.fundedAmount = fundedAmount;
         this.intRate = intRate;
         this.installment = installment;
+        this.dti = dti;
         this.requestStatusAgent = requestStatusAgent;
         this.issueDate = issueDate;
         this.startDate = startDate;
         this.requestDate = requestDate;
         this.term = term;
         this.purpose = purpose;
+        this.homeOwnership=homeOwnership;
         this.loanStatus = loanStatus;
         this.customerId = customerId;
         this.requestStatusAnalyst = requestStatusAnalyst;
@@ -142,8 +145,17 @@ public class Loan {
         return installment;
     }
 
+
     public void setInstallment(double installment) {
         this.installment = installment;
+    }
+
+    public double getDti() {
+        return dti;
+    }
+
+    public void setDti(double dti) {
+        this.dti = dti;
     }
 
     public Date getIssueDate() {

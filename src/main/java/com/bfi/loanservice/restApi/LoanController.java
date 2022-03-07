@@ -28,15 +28,18 @@ public class LoanController {
                 loanRequest.getFundedAmount(),
                 loanRequest.getIntRate(),
                 loanRequest.getInstallment(),
+                loanRequest.getDti(),
                 loanRequest.getRequestStatusAgent(),
                 loanRequest.getIssueDate(),
                 loanRequest.getStartDate(),
                 loanRequest.getRequestDate(),
                 loanRequest.getTerm(),
                 loanRequest.getPurpose(),
+                loanRequest.getHomeOwnership(),
                 loanRequest.getLoanStatus(),
                 loanRequest.getCustomerId(),
                 loanRequest.getRequestStatusAnalyst());
+        System.out.println("OwnerrrrrrrrrrrrrShip"+loanRequest.getHomeOwnership());
         loanRepository.save(l);
         return ResponseEntity.ok(new MessageResponse("Loan registered successfully!"));
 
@@ -58,6 +61,14 @@ public class LoanController {
     public List<Loan> findByLastId(@PathVariable (value = "key") Long key) {
 
         return loanRepository.findByLastId(key);
+    }
+
+
+    @GetMapping("/customer/{key}")
+    public List<Loan> findByCustomer(@PathVariable (value = "key") Long key) {
+
+        System.out.println("Loan by id customeeeeeeeeeeeeeeeeeeeeer"+key);
+        return loanRepository.findByIdCustomer(key);
     }
 
 

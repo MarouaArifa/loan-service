@@ -28,6 +28,7 @@ public class LoanRequest {
 
 
     private double installment;
+    private double dti;
 
     private Date issueDate;
     private Date startDate;
@@ -93,6 +94,14 @@ public class LoanRequest {
 
     public void setInstallment(double installment) {
         this.installment = installment;
+    }
+
+    public double getDti() {
+        return dti;
+    }
+
+    public void setDti(double dti) {
+        this.dti = dti;
     }
 
     public Date getIssueDate() {

@@ -11,8 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.sql.Date;
+import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
+
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -50,19 +55,35 @@ public class PaymentScheduleController {
 
     }
 
-    @PutMapping("/updateLateDays/{id}/{d}")
-    public int updateLateDays(@PathVariable(value = "id") Long id,@PathVariable(value = "d") int d) throws NotFoundException {
+    @PutMapping("/updateLateDays/{id}")
+    public int updateLateDays(@PathVariable(value = "id") Long id) throws NotFoundException {
 
-        return  paymentRepository.updateLateDays(id,d);
+        return  paymentRepository.updateLateDays(id);
     }
 
 
-    @GetMapping("findByDate/{key}")
-    public List<paymentSchedule> findMulti(@PathVariable (value = "key") String key) {
+    @GetMapping("findByDate")
+    public List<paymentSchedule> findMulti() {
 
-        return paymentRepository.findByDate(key);
+
+        return paymentRepository.findByDate();
 
     }
 
+
+    @GetMapping("/findByLoan/{id}")
+    public List<paymentSchedule>findByLoan(@PathVariable(value = "id") Long id) throws NotFoundException {
+
+        return  paymentRepository.findByLoan(id);
+    }
+
+
+    @GetMapping("findFirst/{id}")
+    public paymentSchedule findFirst(@PathVariable (value = "id") Long id) {
+
+
+        return paymentRepository.findFirst(id).get(0);
+
+    }
 
 }

@@ -16,6 +16,10 @@ public interface LoanRepository  extends JpaRepository<Loan,Long> {
     List<Loan> findByLastId(Long key);
 
 
+    @Query("select l from Loan l where l.customerId =:key")
+    List<Loan> findByIdCustomer(Long key);
+
+
     @Modifying
     @Transactional
     @Query("update Loan l set l.requestStatusAgent =:d where l.id =:id ")
@@ -38,6 +42,7 @@ public interface LoanRepository  extends JpaRepository<Loan,Long> {
 
     @Query("select l from Loan l where cast( l.customerId as string) like %:key%  or cast( l.startDate as string) like %:key%")
     List<Loan> findMulti(String key);
+
 
 
 }
